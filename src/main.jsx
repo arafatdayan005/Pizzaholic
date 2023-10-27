@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home.jsx';
 import Menu, { loader as menuLoader } from './Pages/Menu/Menu.jsx'
+import Cart from './Pages/Cart/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: '/menu',
         element: <Menu />,
         loader: menuLoader,
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       },
     ]
   },

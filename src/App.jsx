@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import { Outlet } from 'react-router-dom'
+import CartOverview from './Pages/Cart/CartOverview'
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Navbar></Navbar>
       <div className="mx-auto w-full lg:w-[80vw]">
         <Outlet></Outlet>
-      </div>      
+      </div>
+      <CartOverview></CartOverview>
       <Footer></Footer>
     </>
   )
