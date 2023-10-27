@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './Pages/Home.jsx';
+import Menu, { loader as menuLoader } from './Pages/Menu/Menu.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
-      }
+      },
+      {
+        path: '/menu',
+        element: <Menu />,
+        loader: menuLoader,
+      },
     ]
   },
 ]);
