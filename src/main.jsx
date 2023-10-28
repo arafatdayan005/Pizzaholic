@@ -9,6 +9,8 @@ import {
 import Home from './Pages/Home.jsx';
 import Menu, { loader as menuLoader } from './Pages/Menu/Menu.jsx'
 import Cart from './Pages/Cart/Cart.jsx';
+import CreateOrder, { action as createOrderAction } from './Pages/Order/CreateOrder.jsx';
+import Order, { loader as orderLoader } from './Pages/Order/Order.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,16 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />
+      },
+      {
+        path: '/order/new',
+        element: <CreateOrder />,
+        action: createOrderAction,
+      },
+      {
+        path: '/order/:orderId',
+        element: <Order />,
+        loader: orderLoader,
       },
     ]
   },
