@@ -11,6 +11,8 @@ import Menu, { loader as menuLoader } from './Pages/Menu/Menu.jsx'
 import Cart from './Pages/Cart/Cart.jsx';
 import CreateOrder, { action as createOrderAction } from './Pages/Order/CreateOrder.jsx';
 import Order, { loader as orderLoader } from './Pages/Order/Order.jsx';
+import { Provider } from 'react-redux';
+import store from './Redux/store.js';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )
