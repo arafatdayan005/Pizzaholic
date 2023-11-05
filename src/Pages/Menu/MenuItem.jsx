@@ -1,10 +1,23 @@
+import { useDispatch } from 'react-redux';
 import Button from './../../Components/Button';
 import { formatCurrency } from './../../Utilities/formatter';
 import { FaShoppingCart } from "react-icons/fa";
+import { addItem } from '../../Redux/cartSlice';
 
 function MenuItem({ pizza }) {
-    const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+    const dispatch = useDispatch();
+    const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
+    const handleAddToCart = () => {
+        const newItem = {
+            id,
+            name,
+            quantity: 1,
+            unitPrice,
+            totalPrice: unitPrice * 1
+        };
+        dispatch(addItem(newItem));
+    }
     return (
         <div className="gap-4 bg-white rounded-xl hover:shadow-lg hover:shadow-yellow-500 transition-all duration-300 overflow-hidden group relative">
             <img
@@ -26,7 +39,13 @@ function MenuItem({ pizza }) {
                         </p>
                     )}
 
-                    <Button type="primary"><span className="text-white"><FaShoppingCart/></span></Button>
+                    {!soldOut &&
+                        <Button onClick={handleAddToCart} type="primary">
+                            <span className="text-white">
+                                <FaShoppingCart />
+                            </span>
+                        </Button>
+                    }
                 </div>
             </div>
         </div>
